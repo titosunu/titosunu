@@ -1,16 +1,34 @@
 ## Hi there 👋
 
-<!--
-**titosunu/titosunu** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+```go
+package main
 
-Here are some ideas to get you started:
+import (
+	"fmt"
+)
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+func devAdvice(project string, mood string) string {
+	funEmojis := map[string]string{
+		"enthusiastic": "🚀",
+		"neutral":      "🛠️",
+		"stuck":        "😓",
+	}
+
+	professionalAdvice := map[string]string{
+		"enthusiastic": "Keep pushing forward and experimenting!",
+		"neutral":      "Maintain focus and work steadily towards your goals.",
+		"stuck":        "Take a break, review your approach, and seek help if needed.",
+	}
+
+	if _, moods := funEmojis[mood]; !moods {
+		return "Invalid mood! Please choose between 'enthusiastic', 'neutral', or 'stuck'."
+	}
+
+	return fmt.Sprintf("Current project: %s %s. Advice: %s", project, funEmojis[mood], professionalAdvice[mood])
+}
+
+func main() {
+	message := devAdvice("Build a new feature", "stuck")
+	fmt.Println(message)
+}
+```
